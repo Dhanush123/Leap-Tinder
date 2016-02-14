@@ -165,12 +165,14 @@
           var gesture = frame.gestures[i];
           if(gesture.type == "swipe") {
 
+            if(!swipeisregistered){
+
             console.log(gesture);
             console.log("before" , currentFriendIndex);              
                 
-                var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+              var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
 
-                if(!swipeisregistered){
+                
 
                 if(isHorizontal){
                     if(gesture.direction[0] > 0){
@@ -199,18 +201,26 @@
                     }
                 } 
                 console.log(swipeDirection);
-                swipeisregistered=true;
-              }//swipeisregistered
-             } else {
-              console.log("not a swipe");
-             }   
-           } 
-         }
+
+              
+             }//if the swipe isnt registered
+             else{
+              if(frame.hands.length == 0){
+                swipeisregistered = false;
+              }
+              else{
+                console.log("mother f*ker");
+              }
+             }
+           }//if gesture is swipe
+
+           } //iterate thru getsures
+         }//frame.gestures.length check
       
 
       //swipeisregistered = false;
 
-    });
+    });//controller leap loop 
   </script>
 
   <!--
