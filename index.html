@@ -144,8 +144,11 @@
 
     }
 
+    var controller = new Leap.Controller();
+    controller.connect();
+
     var controllerOptions = {enableGestures: true};
-    Leap.loop(controllerOptions, function(frame) {
+    controller.loop(controllerOptions, function(frame) {
 
       // Display Gesture object data
       if (frame.gestures.length > 0) {
