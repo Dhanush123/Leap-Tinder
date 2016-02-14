@@ -87,16 +87,30 @@
       //only getting 274? back tho..
     }
     function getFBFriends(){
-      /* make the API call */
+            FB.api(
+        '/{friend-list-id}',
+        'GET',
+        {},
+        function(response) {
+            // Insert your code here
+            console.log("Friends: "+response);
+        }
+      );
+      /**
       FB.api(
           "/me/friends",
           function (response) {
             if (response && !response.error) {
+              var friendsNameList = [];
+              var f
+              for(var i=0; i < 29; i++){
+                var friend = response.data.
+              }
               console.log("Friends: "+response);
-              /* handle the result */
             }
           }
       );
+      **/
     }
   </script>
 
@@ -104,7 +118,7 @@
     Below we include the Login Button social plugin. This button uses
     the JavaScript SDK to present a graphical Login button that triggers
     the FB.login() function when clicked.
-  -->  <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
+  -->  <fb:login-button scope="public_profile,email,user_friends,read_custom_friendlists" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
     </fb:login-button>
 
 
