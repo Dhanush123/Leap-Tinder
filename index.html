@@ -120,6 +120,18 @@
             }
             console.log("Friends: "+friendsNameList);
             console.log("Friends ids: "+friendsIDList);
+
+            console.log(currentFriendIndex);
+            callURL = '/' + friendsIDList[currentFriendIndex] + '/picture';
+            console.log("profile pic url: "+callURL);
+            FB.api(callURL, 'GET', {},
+            function(response) {
+              console.log(response);
+              $("#friendName").text(friendsNameList[currentFriendIndex]);
+              $("#profilePic").attr("src",response.data.url);
+              console.log("after " + currentFriendIndex);
+              currentFriendIndex++;
+            });
           }
         }
       );
