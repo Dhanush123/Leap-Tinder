@@ -93,13 +93,11 @@
             if (response && !response.error) {
 
               var friendsNameList = [];
-
+                var friend = "";
               for(var k in response.data) {
-                var friend = response.data[k].name;
+                friend = response.data[k].name;
 
-                if(!friend === undefined || !friend === null){
                   friendsNameList[k] = friend;
-                }
               }
               console.log("Friends: "+friendsNameList);
             }
