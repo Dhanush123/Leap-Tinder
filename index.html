@@ -137,7 +137,7 @@
       if (frame.gestures.length > 0) {
         frame.gestures.forEach(function(jest) {
           if(jest.type == "swipe") {
-            var state = gesture.state;
+            var state = jest.state;
 
             switch(state) {
               case "start":
@@ -146,7 +146,7 @@
               case "stop":
                 tracking = false;
 
-                var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+                var isHorizontal = Math.abs(jest.direction[0]) > Math.abs(jest.direction[1]);
 
                 if (isHorizontal) {
                   if(currentFriendIndex == friendsNameList.length) {
@@ -154,7 +154,7 @@
                     alert("same"); 
                   }
 
-                  if(gesture.direction[0] > 0) {
+                  if(jest.direction[0] > 0) {
                     //right
                     alert("You matched with " + friendsNameList[currentFriendIndex] + "! :)");
                   } else {
