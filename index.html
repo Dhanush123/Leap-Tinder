@@ -179,6 +179,8 @@
                         alert("You matched with "+friendsNameList[currentFriendIndex-1]+"! :)");
                         }
                         displayFriendProfilePic();
+                                    swipeisregistered = false;
+
                         
                     } else {
                         swipeDirection = "left";
@@ -189,6 +191,8 @@
                         alert("You unmatched with "+friendsNameList[currentFriendIndex-1]+"! :(");                     
                         }
                         displayFriendProfilePic();
+                                    swipeisregistered = false;
+
                     }
                 } else { //vertical
                     if(gesture.direction[1] > 0){
