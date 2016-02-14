@@ -158,8 +158,12 @@
               if(isHorizontal){
                   if(gesture.direction[0] > 0){
                       swipeDirection = "right";
+                      alert("You matched with "+friendsNameList[currentFriendIndex]+"! :)");
+                      displayFriendProfilePic();
                   } else {
                       swipeDirection = "left";
+                      alert("You unmatched with "+friendsNameList[currentFriendIndex]+"! :(");
+                      displayFriendProfilePic();
                   }
               } else { //vertical
                   if(gesture.direction[1] > 0){
@@ -182,6 +186,7 @@
     the FB.login() function when clicked.
   -->  <fb:login-button scope="public_profile,email,user_friends,read_custom_friendlists" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
     </fb:login-button>
+    <br>
     <img src="" alt="Profile Pictures will show here" style="width:304px;height:228px;" id="profilePic">
 
 
