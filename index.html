@@ -89,17 +89,28 @@
     function getFBFriends(){
       FB.api(
           "/me/friends",
+          'GET',
+          {},
           function (response) {
             if (response && !response.error) {
 
               var friendsNameList = [];
-                var friend = "";
-              for(var k in response.data) {
-                friend = response.data[k].name;
+              var friendsIDList = [];
+              var friendName = "";
+              var friendID = 0;
 
-                  friendsNameList[k] = friend;
+              for(var k in response.data) {
+                friendName = response.data[k].name;
+                if(friendName != null || friendName != undefined){
+                friendsNameList[k] = friendName;
+                }
+                friendID = response.data[k].id;
+                if(friendID != null || friendID != undefined){
+                friendsIDList[k] = friendID;
+                }
               }
               console.log("Friends: "+friendsNameList);
+              console.log("Friends ids: "+friendsIDList);
             }
           }
       );
