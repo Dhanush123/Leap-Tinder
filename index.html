@@ -146,8 +146,9 @@
           console.log(response);
           $("#friendName").text(friendsNameList[currentFriendIndex]);
             $("#profilePic").attr("src",response.data.url);
-            currentFriendIndex++;
-            console.log("after" + currentFriendIndex);
+              console.log("after" + currentFriendIndex);
+              currentFriendIndex++;
+
         }
       );
     }
@@ -210,7 +211,7 @@
              }//if the swipe isnt registered
              else{
               if(frame.hands.length == 0){
-                swipeisregistered = false;
+                swipeisregistered = true;
                 console.log("no hands");
               }
               else{
