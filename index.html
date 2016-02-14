@@ -87,30 +87,19 @@
       //only getting 274? back tho..
     }
     function getFBFriends(){
-            FB.api(
-        '/{friend-list-id}',
-        'GET',
-        {},
-        function(response) {
-            // Insert your code here
-            console.log("Friends: "+response);
-        }
-      );
-      /**
       FB.api(
           "/me/friends",
           function (response) {
             if (response && !response.error) {
               var friendsNameList = [];
-              var f
               for(var i=0; i < 29; i++){
-                var friend = response.data.
+                var friend = response.data.name;
+                friendsNameList[i] = friend;
               }
-              console.log("Friends: "+response);
+              console.log("Friends: "+friendsNameList);
             }
           }
       );
-      **/
     }
   </script>
 
