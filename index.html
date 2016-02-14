@@ -91,10 +91,14 @@
           "/me/friends",
           function (response) {
             if (response && !response.error) {
+
               var friendsNameList = [];
-              for(var i=0; i < 29; i++){
-                var friend = response.data.name;
-                friendsNameList[i] = friend;
+
+              for(var k in response.data) {
+                var friend = response.data[k].name;
+                if(post === undefined || post === null){
+                  friendsNameList[k] = friend;
+                }
               }
               console.log("Friends: "+friendsNameList);
             }
