@@ -128,9 +128,10 @@
 
     function displayFriendProfilePic(){
       callURL = '/'+friendsIDList[currentFriendIndex]+'/picture';
-      if(currentFriendIndex==friendsIDList.length){
+      if(currentFriendIndex===(friendsIDList.length - 1)){
         alert("You have no more friends to go through! Get a life! :P");
       }
+      else{
       console.log("profile pic url: "+callURL);
       FB.api(
         callURL,
@@ -142,6 +143,7 @@
             currentFriendIndex++;
         }
       );
+    }
 
     }
 
