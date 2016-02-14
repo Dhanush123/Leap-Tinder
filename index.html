@@ -100,30 +100,28 @@
     var friendsIDList = [];
 
     function getFBFriends(){
-      FB.api(
-          "/me/friends",
-          'GET',
-          {},
-          function (response) {
-            if (response && !response.error) {
-              var friendName = "";
-              var friendID = 0;
+      FB.api("/me/friends", 'GET', {},
+        function (response) {
+          if (response && !response.error) {
+            var friendName = "";
+            var friendID = 0;
 
-              for(var k in response.data) {
-                friendName = response.data[k].name;
-                if(friendName != null || friendName != undefined){
+            for(var k in response.data) {
+              friendName = response.data[k].name;
+              
+              if(friendName != null || friendName != undefined){
                 friendsNameList[k] = friendName;
-                }
-                friendID = response.data[k].id;
-                if(friendID != null || friendID != undefined){
-                friendsIDList[k] = friendID;
-                }
               }
-              console.log("Friends: "+friendsNameList);
-              console.log("Friends ids: "+friendsIDList);
-              displayFriendProfilePic();
+
+              friendID = response.data[k].id;
+              if(friendID != null || friendID != undefined){
+                friendsIDList[k] = friendID;
+              }
             }
+            console.log("Friends: "+friendsNameList);
+            console.log("Friends ids: "+friendsIDList);
           }
+        }
       );
     }
 
@@ -135,8 +133,7 @@
       callURL = '/'+friendsIDList[currentFriendIndex]+'/picture';
       if(currentFriendIndex===(friendsIDList.length)){
         alert("You have no more friends to go through! Get a life! :P");
-      }
-      else{
+      } else {
       console.log("profile pic url: "+callURL);
       FB.api(
         callURL,
@@ -155,10 +152,60 @@
 
     }
 
-     var swipeisregistered = false;
-    var swipeDirection = "nil";
+    //var swipeisregistered = false;
+    //var swipeDirection = "nil";
+
+    var tracking = false;
 
     var controllerOptions = {enableGestures: true};
+    var controller = Leap.loop(controllerOptions, function(frame) {
+      if (frame.gestures.length > 0) {
+        frame.gestures.forEach(function(jest) {
+          if(jest.type == "swipe") {
+            var state = gesture.state;
+
+            switch(state) {
+              case "start":
+                tracking = true;
+                break;
+              case "stop":
+                tracking = false;
+
+                var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+
+                if (isHorizontal) {
+                  if(currentFriendIndex == friendsNameList.length) {
+                    alert("You have no more friends to go through! Get a life! :P"); 
+                  }
+
+                  if(gesture.direction[0] > 0) {
+                    //right
+                    alert("You matched with " + friendsNameList[currentFriendIndex] + "! :)");
+                  } else {
+                    //left
+                    alert("You unmatched with " + friendsNameList[currentFriendIndex] + "! :(");
+                  }
+
+                  console.log(currentFriendIndex);
+                  callURL = '/' + friendsIDList[currentFriendIndex] + '/picture';
+                  console.log("profile pic url: "+callURL);
+                  FB.api(callURL, 'GET', {},
+                  function(response) {
+                    console.log(response);
+                    $("#friendName").text(friendsNameList[currentFriendIndex]);
+                    $("#profilePic").attr("src",response.data.url);
+                    console.log("after" + currentFriendIndex);
+                    currentFriendIndex++;
+                  });
+                }
+                break;
+              }
+            }
+          }
+        });
+      }
+    }
+    /*
     var controller = Leap.loop(controllerOptions, function(frame) {
       //console.log(frame);
       // Display Gesture object data
@@ -210,11 +257,11 @@
               
              }//if the swipe isnt registered
              else{
-              /*if(frame.hands.length == 0){
+              /if(frame.hands.length == 0){
                 swipeisregistered = true;
                 console.log("no hands");
               }
-              else{*/
+              else{/
                 console.log("mother f*ker");
                 swipeisregistered=false;
               //}//
@@ -227,7 +274,7 @@
 
       //swipeisregistered = false;
 
-    });//controller leap loop 
+    });*///controller leap loop 
   </script>
 
   <!--
