@@ -162,8 +162,9 @@
               if(isHorizontal){
                   if(gesture.direction[0] > 0){
                       swipeDirection = "right";
-                      alert("You matched with "+friendsNameList[currentFriendIndex]+"! :)");
                       displayFriendProfilePic();
+                      alert("You matched with "+friendsNameList[currentFriendIndex]+"! :)");
+                      
                   } else {
                       swipeDirection = "left";
                       alert("You unmatched with "+friendsNameList[currentFriendIndex]+"! :(");
