@@ -211,13 +211,21 @@
 
   <h1 style="text-align:center">Tinder. "Swiper, start swiping!"</h1>
 
-   <fb:login-button style="display:block;margin:auto;" scope="public_profile,email,user_friends,read_custom_friendlists" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false" class="btn btn-info">
+   <fb:login-button style="display:block;text-align:center;" scope="public_profile,email,user_friends,read_custom_friendlists" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false" class="btn btn-info">
     </fb:login-button>
 
   </div>
 
     <br>
-    <img style="display:block;margin:auto;height:200px;width:200px;" class="img-circle" src="" alt="Profile Pictures will show here" id="profilePic">
+    <div>
+
+    <img style="display:block;margin:auto;height:200px;width:200px;float:left" class="img-circle" src="/no.png" alt="No!" id="no">
+
+    <img style="display:block;margin:auto;height:200px;width:200px;"  src="" alt="Profile Pictures will show here" id="profilePic">
+
+    <img style="display:block;margin:auto;height:200px;width:200px;" src="/yes.png" alt="Yes!" id="yes">
+
+    </div>
     <br>
     <h1 id="friendName" style="text-align:center"></h1>
 
