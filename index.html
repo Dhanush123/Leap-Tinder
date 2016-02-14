@@ -128,7 +128,7 @@
 
     function displayFriendProfilePic(){
       callURL = '/'+friendsIDList[currentFriendIndex]+'/picture';
-      if(currentFriendIndex===(friendsIDList.length - 1)){
+      if(currentFriendIndex===(friendsIDList.length)){
         alert("You have no more friends to go through! Get a life! :P");
       }
       else{
@@ -150,7 +150,7 @@
 
     var controllerOptions = {enableGestures: true};
     var controller = Leap.loop(controllerOptions, function(frame) {
-      console.log(frame);
+      //console.log(frame);
       // Display Gesture object data
       if (frame.gestures.length > 0) {
         for (var i = 0; i < frame.gestures.length; i++) {
