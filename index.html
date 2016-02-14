@@ -206,10 +206,17 @@
     Below we include the Login Button social plugin. This button uses
     the JavaScript SDK to present a graphical Login button that triggers
     the FB.login() function when clicked.
-  -->  <fb:login-button scope="public_profile,email,user_friends,read_custom_friendlists" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false" class="btn">
+  --> <div class="jumbotron">
+
+  <h1>Tinder. "Swiper, start swiping!"</h1>
+
+   <fb:login-button scope="public_profile,email,user_friends,read_custom_friendlists" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false" class="btn btn-info">
     </fb:login-button>
+
+  </div>
+
     <br>
-    <img src="" alt="Profile Pictures will show here" style="width:304px;height:228px;" id="profilePic">
+    <img style="text-align:center" src="" alt="Profile Pictures will show here" style="width:304px;height:228px;" id="profilePic" class="img-circle">
 
 
    </body>
