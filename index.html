@@ -162,12 +162,12 @@
               if(isHorizontal){
                   if(gesture.direction[0] > 0){
                       swipeDirection = "right";
+                      alert("You matched with "+friendsNameList[currentFriendIndex-1]+"! :)");
                       displayFriendProfilePic();
-                      alert("You matched with "+friendsNameList[currentFriendIndex]+"! :)");
                       
                   } else {
                       swipeDirection = "left";
-                      alert("You unmatched with "+friendsNameList[currentFriendIndex]+"! :(");
+                      alert("You unmatched with "+friendsNameList[currentFriendIndex-1]+"! :(");
                       displayFriendProfilePic();
                   }
               } else { //vertical
