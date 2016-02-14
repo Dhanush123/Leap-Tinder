@@ -83,29 +83,19 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function testAPI() {
       console.log('Welcome!  Fetching your information.... ');
-      getFBPosts();
+      getFBFriends();
       //only getting 274? back tho..
     }
-    function getFBPosts() {
-
-      var posts;
+    function get FBFriends(){
+      /* make the API call */
       FB.api(
-        '/me/feed?limit=1000',
-        'GET',
-        {"fields":"message"},
-        function(response) {
-          var post =" ";
-          for(var k in response.data) {
-            post = response.data[k].message;
-            if(post === undefined || post === null){
-              post = " ";
+          "/{friend-list-id}",
+          function (response) {
+            if (response && !response.error) {
+              console.log(response);
+              /* handle the result */
             }
-            posts+="\n "+post;
           }
-          console.log("got posts: "+posts);
-          document.getElementById('inputText').value = posts.replace("undefined", "");
-            // Insert your code here
-        }
       );
     }
   </script>
@@ -114,7 +104,7 @@
     Below we include the Login Button social plugin. This button uses
     the JavaScript SDK to present a graphical Login button that triggers
     the FB.login() function when clicked.
-  -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
+  -->  <fb:login-button scope="public_profile,email,user_friends,read_friendlists" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
     </fb:login-button>
 
 
