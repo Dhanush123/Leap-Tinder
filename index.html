@@ -172,12 +172,22 @@
               if(isHorizontal){
                   if(gesture.direction[0] > 0){
                       swipeDirection = "right";
+                      if((currentFriendIndex+1)==friendsNameList.length){
+                        alert("You have no more friends to go through! Get a life! :P"); 
+                      }
+                      else{
                       alert("You matched with "+friendsNameList[currentFriendIndex-1]+"! :)");
+                      }
                       displayFriendProfilePic();
                       
                   } else {
                       swipeDirection = "left";
-                      alert("You unmatched with "+friendsNameList[currentFriendIndex-1]+"! :(");
+                      if((currentFriendIndex+1)==friendsNameList.length){
+                        alert("You have no more friends to go through! Get a life! :P"); 
+                      }
+                      else{
+                      alert("You unmatched with "+friendsNameList[currentFriendIndex-1]+"! :(");                     
+                      }
                       displayFriendProfilePic();
                   }
               } else { //vertical
