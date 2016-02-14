@@ -131,6 +131,7 @@
    
 
     function displayFriendProfilePic(){
+      console.log(currentFriendIndex);
       callURL = '/'+friendsIDList[currentFriendIndex]+'/picture';
       if(currentFriendIndex===(friendsIDList.length)){
         alert("You have no more friends to go through! Get a life! :P");
@@ -154,7 +155,7 @@
     }
 
      var swipeisregistered = false;
-var swipeDirection = "nil";
+    var swipeDirection = "nil";
 
     var controllerOptions = {enableGestures: true};
     var controller = Leap.loop(controllerOptions, function(frame) {
@@ -164,23 +165,26 @@ var swipeDirection = "nil";
         for (var i = 0; i < frame.gestures.length; i++) {
           var gesture = frame.gestures[i];
           if(gesture.type == "swipe") {
-
             if(!swipeisregistered){
-
+            swipeisregistered  = true;
             console.log(gesture);
-            console.log("before" , currentFriendIndex);              
+            console.log("before" , currentFriendIndex); 
+            console.log("swipe is not registered");             
                 
               var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
 
                 
 
                 if(isHorizontal){
+                  console.log("its isHorizontal");
                     if(gesture.direction[0] > 0){
+                        console.log("its right");
                         swipeDirection = "right";
                         if((currentFriendIndex+1)==friendsNameList.length){
                           alert("You have no more friends to go through! Get a life! :P"); 
                         }
                         else{
+                          console.log("its right and first swipe");
                         alert("You matched with "+friendsNameList[currentFriendIndex-1]+"! :)");
                         }
                         displayFriendProfilePic();
