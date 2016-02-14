@@ -126,31 +126,6 @@
     }
 
     var currentFriendIndex = 0;
-   
-
-    function displayFriendProfilePic(){
-      console.log(currentFriendIndex);
-      callURL = '/'+friendsIDList[currentFriendIndex]+'/picture';
-      if(currentFriendIndex===(friendsIDList.length)){
-        alert("You have no more friends to go through! Get a life! :P");
-      } else {
-      console.log("profile pic url: "+callURL);
-      FB.api(
-        callURL,
-        'GET',
-        {},
-        function(response) {
-          console.log(response);
-          $("#friendName").text(friendsNameList[currentFriendIndex]);
-            $("#profilePic").attr("src",response.data.url);
-              console.log("after" + currentFriendIndex);
-              currentFriendIndex++;
-
-        }
-      );
-    }
-
-    }
 
     //var swipeisregistered = false;
     //var swipeDirection = "nil";
@@ -205,7 +180,7 @@
           }
         }
       });
-    }
+    });
     /*
     var controller = Leap.loop(controllerOptions, function(frame) {
       //console.log(frame);
