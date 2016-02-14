@@ -13,6 +13,9 @@
   <script src="//js.leapmotion.com/leap.rigged-hand-0.1.7.js"></script>
   <script src="//js.leapmotion.com/leap-plugins-0.1.11-utils.js"></script>
 
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/bootstrap-material-design.min.css">
 </head>
 
 <body>
@@ -158,7 +161,7 @@
         for (var i = 0; i < frame.gestures.length; i++) {
           var gesture = frame.gestures[i];
           if(gesture.type == "swipe") {
-console.log("before" , currentFriendIndex);
+          console.log("before" , currentFriendIndex);
             if(!swipeisregistered){
               
               swipeisregistered = true;
@@ -184,6 +187,8 @@ console.log("before" , currentFriendIndex);
                   }
               }
               console.log(swipeDirection);
+           } else {
+            console.log("ignoring swipes");
            }
 
          } else {
@@ -201,7 +206,7 @@ console.log("before" , currentFriendIndex);
     Below we include the Login Button social plugin. This button uses
     the JavaScript SDK to present a graphical Login button that triggers
     the FB.login() function when clicked.
-  -->  <fb:login-button scope="public_profile,email,user_friends,read_custom_friendlists" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
+  -->  <fb:login-button scope="public_profile,email,user_friends,read_custom_friendlists" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false" class="btn">
     </fb:login-button>
     <br>
     <img src="" alt="Profile Pictures will show here" style="width:304px;height:228px;" id="profilePic">
