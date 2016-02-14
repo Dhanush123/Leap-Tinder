@@ -97,7 +97,7 @@
               for(var k in response.data) {
                 var friend = response.data[k].name;
 
-                if(friend === undefined || friend === null){
+                if(!friend === undefined || !friend === null){
                   friendsNameList[k] = friend;
                 }
               }
